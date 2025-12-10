@@ -18,20 +18,20 @@ class Stack:
             raise IndexError("peek from empty stack")
         return my.items[-1]
     
-def is_valid_parentheses(str):
+def is_valid_parentheses(s):
     a = Stack()
-    for i in range(len(str)):
-        if str[i] in "([{":
-            a.push(str[i])
+    for i in range(len(s)):
+        if s[i] in "([{":
+            a.push(s[i])
         else:
             if a.is_empty():
                 return False 
             
             else:
                 top = a.top()
-                if (top == "(" and  str[i] == ")") or \
-                    (top == "{" and str[i] == "}") or \
-                    (top == "[" and str[i] == "]"):
+                if (top == "(" and  s[i] == ")") or \
+                    (top == "{" and s[i] == "}") or \
+                    (top == "[" and s[i] == "]"):
                     a.pop()
                 else:
                     return False
@@ -40,6 +40,7 @@ def is_valid_parentheses(str):
         return True
        
 print(is_valid_parentheses("()[]{}"))  # True
+print(is_valid_parentheses("([{}])"))  # True
 print(is_valid_parentheses("(]"))      # False
                 
             
